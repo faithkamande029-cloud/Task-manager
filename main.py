@@ -11,6 +11,7 @@ def main():
         print("3. View Pending Tasks")
         print("4. View Progress")
         print("5. Exit")
+
         choice = input("Enter your choice (1-5): ")
 
         if choice == "1":
@@ -18,26 +19,21 @@ def main():
             due_date = input("Enter due date (YYYY-MM-DD): ")
             description = input("Enter description (or press Enter to skip) ")
             
-            result = add_task(title, due_date, description)
-
-            if not result["Success"]:
-                print("Errors:")
-                for error in result["errors"]:
-                    print(f" - {error}")
+            add_task(title, due_date, description)
+           
         elif choice == "2":
-            view_pending_tasks()
-            index = int(input("Enter task number to mark as complete: "))
+            
+            index = int(input("Enter task number to mark as complete: ")) - 1
             mark_task_as_complete(index)
 
         elif choice == "3":
             view_pending_tasks()
 
         elif choice == "4":
+
             progress = calculate_progress()
-            print(f"\nTotal tasks : {progress['total']}")
-            print(f"Completed   : {progress['completed']}")
-            print(f"Pending     : {progress['pending']}")
-            print(f"Progress    : {progress['percentage']}%")
+            print(f"progress: {progress:.2f}%")
+           
         
         elif choice == "5":
             print("Exiting the program...")
