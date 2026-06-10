@@ -37,7 +37,7 @@ def mark_task_as_complete(index, tasks=tasks):
         print("Task marked as competed!")
         return
     if 0 <= index < len(tasks):
-        tasks[index]["compeleted"] = True
+        tasks[index]["completed"] = True
         print("Task marked as competed!")
         
     else:
