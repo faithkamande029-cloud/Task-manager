@@ -19,10 +19,10 @@ def main():
             due_date = input("Enter due date (YYYY-MM-DD): ")
             description = input("Enter description (or press Enter to skip) ")
             
-            add_task(title, due_date, description)
+            add_task(title, description, due_date)
            
         elif choice == "2":
-            view_pending_tasks()
+            
             try:
                 index = int(input("Enter task number to mark as complete: "))
 
