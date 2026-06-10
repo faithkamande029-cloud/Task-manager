@@ -1,5 +1,3 @@
-from datetime import datetime
-
 # Import validation functions
 from validation import  (
     validate_task_title, 
@@ -14,12 +12,10 @@ tasks =[]
 # Implement add_task function
 def add_task(title, due_date,  description=""):
 
-    if not validate_task_title(title):
-        return 
-    if validate_task_description(description):
-        return
-    if validate_due_date(due_date):
-        return
+    validate_task_title(title)
+    validate_task_description(description)
+    validate_due_date(due_date)
+
 
     task = {
         "title": title,
@@ -29,18 +25,21 @@ def add_task(title, due_date,  description=""):
     }
     
     
-    tasks.append(task)
-    
+    tasks.append(task)    
 
     print("Task added successfully!")
     
-
     
 # Implement mark_task_as_complete function
 def mark_task_as_complete(index, tasks=tasks):
 
-    if 0 <= index < len(tasks):
+    if len(tasks) == 0:
         print("Task marked as competed!")
+        return
+    if 0 <= index < len(tasks):
+        tasks[index]["compeleted"] = True
+        print("Task marked as competed!")
+        
     else:
         print("Invalid task index.")
     
