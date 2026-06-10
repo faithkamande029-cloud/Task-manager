@@ -22,9 +22,13 @@ def main():
             add_task(title, due_date, description)
            
         elif choice == "2":
-            
-            index = int(input("Enter task number to mark as complete: ")) - 1
-            mark_task_as_complete(index)
+            view_pending_tasks()
+            try:
+                index = int(input("Enter task number to mark as complete: "))
+
+                mark_task_as_complete(index -1)
+            except ValueError:
+                print("Invalid input. Please enter number")
 
         elif choice == "3":
             view_pending_tasks()
@@ -32,7 +36,7 @@ def main():
         elif choice == "4":
 
             progress = calculate_progress()
-            print(f"progress: {progress:.2f}%")
+            print(f"progress: {progress}% of tasks completed")
            
         
         elif choice == "5":
